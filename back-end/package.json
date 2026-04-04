@@ -9,5 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "dotenv": "^17.4.0",
+    "prisma": "^7.6.0"
+  }
 }
