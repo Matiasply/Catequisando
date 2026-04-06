@@ -2,7 +2,7 @@ const pool = require('../config/db');
 
 async function createUser(name, password) {
 
-    const query = 'INSERT INTO Usuario (name, password) VALUES ($1, $2) RETURNING *';
+    const query = 'INSERT INTO Usuario (nome, senha) VALUES ($1, $2) RETURNING *';
     const values = [name, password];
 
     try {
