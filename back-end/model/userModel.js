@@ -16,7 +16,7 @@ async function createUser(name, email, password) {
 
 async function getUserById(id) {
 
-    const query = 'SELECT nome, role FROM usuario WHERE id_usuario = $1';
+    const query = 'SELECT * FROM perfil_usuario WHERE id_usuario = $1';
     const values = [id];
 
     try {
