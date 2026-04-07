@@ -14,6 +14,22 @@ async function createUser(name, email, password) {
     }
 }
 
+async function getUserById(id) {
+
+    const query = 'SELECT nome, role FROM usuario WHERE id_usuario = $1';
+    const values = [id];
+
+    try {
+        const result = await pool.query(query, values);
+        return result.rows;
+    } catch(error) {
+        console.error('Error getting user informations: ', error);
+        throw error;
+    }
+    
+}
+
 module.exports = {
-    createUser
+    createUser,
+    getUserById
 };
