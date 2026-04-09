@@ -93,3 +93,11 @@ CREATE TABLE pergunta_tema (
     FOREIGN KEY (id_pergunta) REFERENCES perguntas(id_pergunta),
     FOREIGN KEY (id_tema) REFERENCES temas(id_tema)
 );
+
+CREATE TABLE refresh_tokens (
+  id SERIAL PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  token_hash TEXT NOT NULL,
+  revoked BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT NOW()
+);
