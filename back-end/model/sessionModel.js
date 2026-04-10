@@ -1,9 +1,9 @@
 const pool = require('../config/db')
 
-async function createSession(name) {
+async function createSession(name, ordem) {
 
-    const query = "INSERT INTO secoes (nome_secao) VALUES ($1) RETURNING *";
-    const values = [name]
+    const query = "INSERT INTO secoes (nome_secao, ordem) VALUES ($1, $2) RETURNING *";
+    const values = [name, ordem]
 
     try {
         const result = await pool.query(query, values);
