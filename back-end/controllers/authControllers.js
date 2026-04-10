@@ -1,7 +1,6 @@
 const authModel = require('../model/authModel');
 const bcrypt = require('bcrypt'); //Criptografia para as senhas dos usuários
 const jwt = require('jsonwebtoken'); //Para geração de tokens JWT
-const pool = require('../config/db');
 
 async function login(req, res) {
     const { email, password } = req.body;
