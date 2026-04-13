@@ -1,6 +1,6 @@
 const pool = require('../config/db')
 
-async function createSession(name, ordem) {
+async function createSection(name, ordem) {
 
     const query = "INSERT INTO secoes (nome_secao, ordem) VALUES ($1, $2) RETURNING *";
     const values = [name, ordem]
@@ -9,7 +9,7 @@ async function createSession(name, ordem) {
         const result = await pool.query(query, values);
         return result.rows[0];
     } catch (error) {
-        console.error("Error creating session");
+        console.error("Error creating section");
         throw error;
     }
 }
@@ -29,6 +29,6 @@ async function getAllSection(id_section) {
 }
 
 module.exports = {
-    createSession,
+    createSection,
     getAllSection
 }

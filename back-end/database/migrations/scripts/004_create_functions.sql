@@ -1,8 +1,8 @@
 
-CREATE OR REPLACE FUNCTION get_secao_completa(p_sessao_id INT)
+CREATE OR REPLACE FUNCTION get_secao_completa(p_secao_id INT)
 RETURNS TABLE (
-  sessao_id INT,
-  sessao_nome TEXT,
+  secao_id INT,
+  secao_nome TEXT,
   modulo_id INT,
   modulo_nome TEXT,
   submodulo_id INT,
@@ -26,7 +26,7 @@ BEGIN
   LEFT JOIN modulos m ON m.id_secao = s.id_secao
   LEFT JOIN submodulos sm ON sm.id_modulo = m.id_modulo
   LEFT JOIN aula a ON a.id_submodulo = sm.id_submodulo
-  WHERE s.id_secao = p_sessao_id
+  WHERE s.id_secao = p_secao_id
   ORDER BY m.ordem ASC, sm.ordem ASC, a.ordem ASC;
 END;
 $$ LANGUAGE plpgsql;
