@@ -14,6 +14,21 @@ async function createSession(name, ordem) {
     }
 }
 
+async function getAllSection(id_section) {
+
+    const query = `SELECT * FROM get_secao_completa($1)`;
+    const values = [id_section]
+
+    try {
+        const result = await pool.query(query, values);
+        return result.rows[0]
+    } catch (error) {
+        console.error("Error getting section", error)
+        throw error;
+    }
+}
+
 module.exports = {
-    createSession
+    createSession,
+    getAllSection
 }

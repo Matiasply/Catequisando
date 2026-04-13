@@ -17,6 +17,20 @@ async function createSession(req, res) {
     }
 }
 
+async function getAllSection(req, res) {
+
+    const id_secao = req.params.id;
+
+    try {
+        const result = await sessionModel.getAllSection(id_secao)
+        res.status(200).json({result})
+    } catch (error) {
+        console.error("Error getting section", error)
+        res.status(500).json({error: 'Error getting section info'})
+    }
+}
+
 module.exports = {
-    createSession
+    createSession,
+    getAllSection
 }
