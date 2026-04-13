@@ -3,6 +3,7 @@ const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const sessionRoutes = require('./routes/sessionRoutes');
 const moduleRoutes = require('./routes/moduleRoutes')
+const subRoutes = require('./routes/subRoutes')
 const classRoutes = require('./routes/classRoutes')
 
 const app = express();
@@ -12,6 +13,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/auth/session', sessionRoutes);
 app.use('/api/auth/module', moduleRoutes)
+app.use('/api/auth/submodule', subRoutes)
 app.use('/api/auth/class', classRoutes)
 
 app.listen(3000, function() {
