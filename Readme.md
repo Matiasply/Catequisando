@@ -4,7 +4,6 @@
 
 Site para catequese, com recursos interativos e conteúdo educativo para crianças e jovens.
 
----
 ## Tecnologias Utilizadas
 
 <p>
@@ -15,7 +14,6 @@ Site para catequese, com recursos interativos e conteúdo educativo para crianç
 <img src=./front-end/public/readme/icons8-postgresql-100.png width="100">
 </p>
 
----
 ## Contribuições
 Contribuições são bem-vindas! Se você deseja contribuir para o projeto, siga as etapas abaixo:
 1. Fork este repositório.
