@@ -1,6 +1,6 @@
 const express = require("express")
 const { createSubmodule } = require("../controllers/submoduleControllers")
-const authenticate = require("../middlewares/authMiddleware")
+const authenticate = require("../middlewares/admMiddleware")
 
 const router = express.Router()
 

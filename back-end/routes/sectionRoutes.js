@@ -1,6 +1,6 @@
 const express = require("express")
 const sectionControllers = require("../controllers/sectionControllers")
-const authenticate = require("../middlewares/authMiddleware")
+const authenticate = require("../middlewares/admMiddleware")
 
 const router = express.Router();
 
