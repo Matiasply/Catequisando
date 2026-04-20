@@ -7,11 +7,11 @@ Site para catequese, com recursos interativos e conteúdo educativo para crianç
 ## Tecnologias Utilizadas
 
 <p>
-<img src=./front-end/public/readme/icons8-html-100.png width="100">
-<img src=./front-end/public/readme/icons8-css-100.png width="100">
-<img src=./front-end/public/readme/icons8-javascript-100.png width="100">
-<img src=./front-end/public/readme/icons8-nodejs-48.png width="100">
-<img src=./front-end/public/readme/icons8-postgresql-100.png width="100">
+<img src=./public/icons8-html-100.png width="100">
+<img src=./public/icons8-css-100.png width="100">
+<img src=./public/icons8-javascript-100.png width="100">
+<img src=./public/icons8-nodejs-48.png width="100">
+<img src=./public/icons8-postgresql-100.png width="100">
 </p>
 
 ## Contribuições
