@@ -15,6 +15,21 @@ async function createSubmodule(req, res) {
     }
 }
 
+async function getAllSubmodule(req, res) {
+   
+    const id = req.params.id;
+
+    try {
+        const dados = subModel.getAllSubmodule(id);
+        return res.status(200).json(dados)
+    } catch (error) {
+        console.error("Error getting information", error)
+        return res.status(404).json({error : "Data not found"})
+    }
+}
+
+
 module.exports = {
-    createSubmodule
+    createSubmodule,
+    getAllSubmodule
 }

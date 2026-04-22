@@ -16,6 +16,21 @@ async function createSubmodule(name, id_module, ordem) {
     }
 }
 
+async function getAllSubmodule(id_submodule) {
+
+    const query = `SELECT * FROM get_submodulo_completo($1)`
+    const values = [id_submodule]
+
+    try {
+        const result = pool.query(query, values);
+        return (await result).rows[0];
+    } catch (error) {
+        console.error("Error getting submodule's information", error)
+        throw error;
+    }
+}
+
 module.exports = {
-    createSubmodule
+    createSubmodule,
+    getAllSubmodule
 }
