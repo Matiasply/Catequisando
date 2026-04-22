@@ -15,6 +15,21 @@ async function createModule(req, res) {
     }
 }
 
+async function getAllModule(req, res) {
+
+    const id = req.params.id;
+    console.log(id)
+
+    try {
+        const dados = await moduleModel.getAllModule(id)
+        return res.status(200).json(dados)
+    } catch (error) {
+        console.error("Error getting module's informations", error)
+        return res.status(404).json({error : "Data not found!"})
+    }
+}
+
 module.exports = {
-    createModule
+    createModule,
+    getAllModule
 }
