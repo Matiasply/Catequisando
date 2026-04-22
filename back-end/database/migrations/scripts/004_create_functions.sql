@@ -56,3 +56,26 @@ BEGIN
   ORDER BY sm.ordem ASC, a.ordem ASC;
 END;
 $$ LANGUAGE plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION get_submodulo_completo(p_submodulo_id INT)
+RETURNS TABLE (
+  id_submodulo INT,
+  nome_submodulo TEXT,
+  aula_id INT,
+  aula_nome TEXT
+)
+AS $$
+BEGIN
+ RETURN QUERY
+ SELECT sub.id_submodulo,
+ sub.nome_submodulo,
+ a.id_aula,
+ a.nome
+ FROM submodulos sub
+ LEFT JOIN aula a ON a.id_submodulo = sub.id_submodulo
+ WHERE sub.id_submodulo = p_submodulo_id
+ ORDER BY a.ordem ASC;
+END;
+$$ LANGUAGE plpgsql;
