@@ -21,7 +21,7 @@ async function getAllSection(id_section) {
 
     try {
         const result = await pool.query(query, values);
-        return result.rows[0]
+        return result.rows
     } catch (error) {
         console.error("Error getting section", error)
         throw error;
