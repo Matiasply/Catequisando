@@ -16,6 +16,6 @@ app.use('/api/auth/module', moduleRoutes)
 app.use('/api/auth/submodule', subRoutes)
 app.use('/api/auth/class', classRoutes)
 
-app.listen(3000, function() {
-    console.log('Server is running on port 3000');
+app.listen(3333, function() {
+    console.log('Server is running on port 3333');
 })
