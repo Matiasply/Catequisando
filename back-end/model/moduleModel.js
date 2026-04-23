@@ -23,7 +23,7 @@ async function getAllModule(id_modulo) {
     
     try {
         const result = await pool.query(query, values);
-        return result.rows[0];
+        return result.rows;
     } catch (error) {
         console.error ("Error getting module informations", error)
         throw error;

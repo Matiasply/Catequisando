@@ -10,7 +10,7 @@ async function createClass(name, id_submodulo, ordem, id_texto, url_imagem, url_
 
     try {
         const result = await pool.query(query, values);
-        return result.rows[0];
+        return result.rows;
     } catch (error) {
         console.error('Error creating class', error);
         throw error;

@@ -22,8 +22,8 @@ async function getAllSubmodule(id_submodule) {
     const values = [id_submodule]
 
     try {
-        const result = pool.query(query, values);
-        return (await result).rows[0];
+        const result = await pool.query(query, values);
+        return result.rows;
     } catch (error) {
         console.error("Error getting submodule's information", error)
         throw error;
