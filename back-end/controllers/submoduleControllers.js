@@ -15,6 +15,35 @@ async function createSubmodule(req, res) {
     }
 }
 
+async function formatar_resposta(rows) {
+
+const resultado = {
+  id: rows[0].id_submodulo,
+  nome: rows[0].nome_submodulo,
+  aulas: []
+};
+
+rows.forEach(row => {
+
+  let aula = resultado.aulas.find(a => a.id === row.aula_id);
+
+  if (!aula) {
+    aula = {
+      id: row.aula_id,
+      nome: row.aula_nome,
+      conteudo: [
+        { cabecalho: row.texto_cabecalho, texto: row.aula_texto, referencias: row.referencias,
+        imagem: row.aula_img, video: row.aula_video, audio: row.aula_audio
+        }
+            ]
+    };
+    resultado.aulas.push(aula);
+  }
+
+});
+    return resultado;
+}
+
 async function getAllSubmodule(req, res) {
    
     const id = req.params.id;

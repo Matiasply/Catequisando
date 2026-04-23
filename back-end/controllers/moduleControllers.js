@@ -15,6 +15,36 @@ async function createModule(req, res) {
     }
 }
 
+async function formatar_resposta(rows) {
+
+const resultado = {
+  id: rows[0].id_modulo,
+  nome: rows[0].nome_modulo,
+  submodulos: []
+};
+
+rows.forEach(row => {
+  let submodulo = resultado.submodulos.find(sm => sm.id === row.submodulo_id);
+
+  if (!submodulo) {
+    submodulo = {
+      id: row.submodulo_id,
+      nome: row.submodulo_nome,
+      aulas: []
+    };
+    resultado.submodulos.push(submodulo);
+  }
+
+  if (row.aula_id) {
+      submodulo.aulas.push({
+      id: row.aula_id,
+      nome: row.nome
+    });
+  }
+});
+    return resultado;
+}
+
 async function getAllModule(req, res) {
 
     const id = req.params.id;
@@ -22,7 +52,8 @@ async function getAllModule(req, res) {
 
     try {
         const dados = await moduleModel.getAllModule(id)
-        return res.status(200).json(dados)
+        const resultado = await formatar_resposta(dados)
+        return res.status(200).json(resultado)
     } catch (error) {
         console.error("Error getting module's informations", error)
         return res.status(404).json({error : "Data not found!"})

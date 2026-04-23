@@ -22,11 +22,11 @@ async function formatar_resposta(rows) {
 const resultado = {
   id: rows[0].secao_id,
   nome: rows[0].secao_nome,
-  conteudo: []
+  modulos: []
 };
 
 rows.forEach(row => {
-  let modulo = resultado.conteudo.find(m => m.id === row.modulo_id);
+  let modulo = resultado.modulos.find(m => m.id === row.modulo_id);
 
   if (!modulo) {
     modulo = {
@@ -34,7 +34,7 @@ rows.forEach(row => {
       nome: row.modulo_nome,
       submodulos: []
     };
-    resultado.conteudo.push(modulo);
+    resultado.modulos.push(modulo);
   }
 
   let submodulo = modulo.submodulos.find(s => s.id === row.submodulo_id);
