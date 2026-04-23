@@ -64,17 +64,31 @@ RETURNS TABLE (
   id_submodulo INT,
   nome_submodulo TEXT,
   aula_id INT,
-  aula_nome TEXT
+  aula_nome TEXT,
+  aula_texto TEXT,
+  texto_cabecalho TEXT,
+  referencias TEXT,
+  aula_img TEXT,
+  aula_video TEXT,
+  aula_audio TEXT
 )
 AS $$
 BEGIN
  RETURN QUERY
- SELECT sub.id_submodulo,
+ SELECT
+ sub.id_submodulo,
  sub.nome_submodulo,
  a.id_aula,
- a.nome
+ a.nome,
+ t.corpo,
+ t.titulo,
+ t.referencias,
+ a.url_imagem,
+ a.url_video,
+ NULL::TEXT
  FROM submodulos sub
  LEFT JOIN aula a ON a.id_submodulo = sub.id_submodulo
+ LEFT JOIN texto t ON t.id_texto = a.id_texto
  WHERE sub.id_submodulo = p_submodulo_id
  ORDER BY a.ordem ASC;
 END;
