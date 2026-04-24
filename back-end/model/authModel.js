@@ -36,10 +36,12 @@ async function storeRefreshToken(userId, refreshToken) {
 async function verifyRefreshToken(refreshToken) {
 
     const tokenHash = await hashToken(refreshToken);
+    
     const query = 'SELECT * FROM refresh_tokens WHERE token_hash = $1 AND revoked = false';
+    const values = [tokenHash]
 
     try {
-        const result = await pool.query(query, [tokenHash]);
+        const result = await pool.query(query, values);
         return result.rows[0];
     } catch (error) {
         console.error('Error verifying refresh token:', error);
