@@ -18,12 +18,12 @@ async function login(req, res) {
             return res.status(401).json({ error: 'Invalid password' });
         }
 
-        const token = jwt.sign({ id: user.id_usuario, name: user.nome, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id_usuario, name: user.nome, role: user.role }, process.env.JWT_SECRET, { expiresIn: '10s' });
         const refreshToken = jwt.sign({ id: user.id_usuario }, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
 
         await authModel.storeRefreshToken(user.id_usuario, refreshToken);
 
-        res.status(200).json({ message: 'Login successful', user, token });
+        res.status(200).json({ message: 'Login successful', user, token, refreshToken });
     } catch (error) {
         res.status(500).json({ error: 'Error logging in' });
     }
@@ -31,7 +31,7 @@ async function login(req, res) {
 
 async function refreshToken(req, res) {
 
-    const refreshToken = req.body;
+    const refreshToken = req.body.refreshToken;
 
     if (!refreshToken) {
         return res.status(400).json({ error: 'No refresh token provided' });
@@ -45,6 +45,7 @@ async function refreshToken(req, res) {
             return res.status(401).json({ error: 'Invalid refresh token' });
         }
     } catch (error) {
+        console.error(error)
         return res.status(500).json({ error: 'Error verifying refresh token' });
     }
 
