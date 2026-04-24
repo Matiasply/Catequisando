@@ -51,7 +51,11 @@ rows.forEach(row => {
   if (row.aula_id) {
       submodulo.aulas.push({
       id: row.aula_id,
-      nome: row.nome
+      nome: row.aula_nome,
+      conteudo : [{
+        cabecalho: row.texto_cabecalho, texto: row.aula_texto, referencias: row.referencias,
+        imagem: row.aula_img, video: row.aula_video, audio: row.aula_audio
+      }]
     });
   }
 });
