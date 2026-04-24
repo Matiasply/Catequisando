@@ -7,7 +7,13 @@ RETURNS TABLE (
   submodulo_id INT,
   submodulo_nome TEXT,
   aula_id INT,
-  nome TEXT
+  aula_nome TEXT,
+  aula_texto TEXT,
+  texto_cabecalho TEXT,
+  referencias TEXT,
+  aula_img TEXT,
+  aula_video TEXT,
+  aula_audio TEXT
 )
 AS $$
 BEGIN
@@ -20,7 +26,13 @@ BEGIN
     sm.id_submodulo,
     sm.nome_submodulo,
     a.id_aula,
-    a.nome
+    a.nome,
+    t.corpo,
+    t.titulo,
+    t.referencias,
+    a.url_imagem,
+    a.url_video,
+    NULL::TEXT
   FROM secoes s
   LEFT JOIN modulos m ON m.id_secao = s.id_secao
   LEFT JOIN submodulos sm ON sm.id_modulo = m.id_modulo
@@ -38,7 +50,13 @@ RETURNS TABLE (
   submodulo_id INT,
   submodulo_nome TEXT,
   aula_id INT,
-  aula_nome TEXT
+  aula_nome TEXT,
+  aula_texto TEXT,
+  texto_cabecalho TEXT,
+  referencias TEXT,
+  aula_img TEXT,
+  aula_video TEXT,
+  aula_audio TEXT
 )
 AS $$
 BEGIN
@@ -48,7 +66,13 @@ BEGIN
   sm.id_submodulo,
   sm.nome_submodulo,
   a.id_aula,
-  a.nome
+  a.nome,
+  t.corpo,
+  t.titulo,
+  t.referencias,
+  a.url_imagem,
+  a.url_video,
+  NULL::TEXT
   FROM modulos m
   LEFT JOIN submodulos sm ON sm.id_modulo = m.id_modulo
   LEFT JOIN aula a ON a.id_submodulo = sm.id_submodulo
